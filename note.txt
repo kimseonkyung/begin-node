@@ -1,0 +1,122 @@
+/* node.js */
+1. 프로젝트 시작
+ 1) $ npm init	// package.json 생성
+ 2) index.js	// 백엔드 시작점
+ 3) $ npm install express --save	// node-express(노드 프레임워크) 다운로드
+ 4) package.json에 명령어 추가		// "start": "node index.js"
+ 5) & npm run start				// 노드 실행 명령어
+ 
+		 
+2. DB 연결
+ 1) mongoDB 유저 생성
+ 2) $ npm install mongoose --save	// DB 연결 도구 다운로드
+ 
+ * index.js에 추가
+ 
+ const mongoose = require('mongoose')
+ mongoose.connect('mongodb+srv://seonk:abcd1234@studydb.warag.mongodb.net/myFirstDatabase?retryWrites=true&w=majority')
+         .then(() => console.log('MongoDB Connected...'))
+         .catch(e => console.log('MongoDB error: ', e));
+
+ 3) DB 스키마 생성
+ 4) 생성된 스키마를 model로 감싸준다.
+ 
+
+3. git
+ 1) git 다운로드 	// 다운로드 확인 $ git --version
+ 2) git 저장소 생성 	// $ git init
+ 3) 저장소 상태 확인		// $ git status
+ 4) .gitignore 생성	// 제외 파일 추가
+ 5) git 구조
+ 
+ Working Directory	->	Staging Area	->	Git repository(LOCAL)	->	Git repository(REMOTE)
+ 
+ (1) Working Directory	->	Staging Area
+  - $ git add .			// 올리는 명령어
+  - $ git rm --cached node_modules -r	// 취소 명령어
+  
+ (2) Staging Area	->	Git repository(LOCAL)
+  - $ git commit -m "처음 저장소에 올림"		// 올리는 명령어 -m 메시지 작성
+  * 에러나는 경우
+	$ git config user.name "seonk"
+	$ git config user.email "yisjoo0617@naver.com"
+  
+ (3) Git repository(LOCAL)	->	Git repository(REMOTE)
+  - $ git push origin main
+  - ssh key 생성			// https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent
+  - github ssh 셋팅하기 	// 사이트 보고 순서대로 명령어 실행
+  - 로컬에 github 연결		// github new 생성 후 사이트보고 순서대로 명령어 실행
+  
+  
+4. $ npm install nodemon --save-dev		// 서버를 재구동 안해도 새로고침하면 수정사항이 적용됨
+
+
+5. 비밀번호 암호화
+ 1) $ npm install bcrypt --save		// https://www.npmjs.com/package/bcrypt
+ 2) 사용방법
+  - salt 생성 (saltRounds: 솔트 글자수) -> salt를 이용하여 암호화
+  
+
+6. 로그인
+ 1) 비밀번호가 일치할 경우 토큰 생성 (토큰은 데이터를 전달할때 암호화해서 보내주거나 세션과 같은 기능을 함)
+ 2) $ npm install jsonwebtoken --save		// 사용법은 npm 사이트 참고
+ 3) 생성된 토큰을 쿠키 or 스토리지에 저장한다.
+ 4) 쿠키 사용시 : $ npm install cookie-parser --save
+ 
+ 
+
+ /* react js */
+ 
+1. npx create-react-app .		// .(닷)은 현재 폴더에 reacte를 설치하겠다는 의미	
+								// npx install -g create-react-app 이렇게 다운받기도 가능, global 디렉토리에 다운받음
+
+2. npm vs npx 차이
+ 1) npm (node package maneger)
+  - 라이브러리를 저장해 놓는 저장소 역할을 한다.
+  - 실행 및 빌드
+  - package.json 에 정의되어 있음
+ 2) npx
+  - 설치를 하지 않고 npm registry에서 찾아서(look up) 다운로드 없이 실행 시켜준다.
+  - 장점 : disk를 낭비하지 않고, 항상 최신 버전을 사용할 수 있음.
+
+
+3. babel, webpack
+ 1) babel : ex6 문법을 ex5문법으로 바꿔주는 역할
+ 2) webpack : js, css, scss... 등 많은 모듈을 합쳐주는 역할
+  - public 폴더에는 적용이 안되기 때문에 이미지파일,css 파일 등은 src에 넣기
+  
+
+4. 라우팅 만들기
+ 2) 라우팅 : 사용자가 어떠한 주소로 들어왔을때 그 주소에 대한 적당한 페이지를 사용자에 보내주는것
+ 1) client 폴더로 와서 라우터 돔 설치		// $ npm install react-router-dom --save
+ 
+
+5. axios
+ 1) ajax와 비슷한 기능
+ 2) $ npm install axios --save
+ 
+
+6. CORS 정책에 의한 크로스 도메인 이슈
+ 1) 프록시를 이용하여 해결
+ 2) 다운로드		// $ npm install http-proxy-middleware --save
+ 
+
+7. 노드 서버와 클라이언트 서버 동시에 키기
+ 1) 노드 디렉토리에서 concurrently 라이브러리 다운로드		// $ npm install concurrently --save
+ 
+
+8. css 프레임워크
+ 1) ant.design 이용		// https://ant.design/docs/spec/cases
+ 2) 클라이언트 디렉토리에서 다운로드	// $ npm install antd --save
+ 
+ 
+9. 리덕스
+ 1) 상태 관리 라이브러리 
+ 2) 데이터 flow : React Component -> ACTION -> REDUCER -> STORE
+  - ACTION : 무엇이 일어났는지 설명하는 객체
+  - REDUCER : 이전 State과 action object를 받은 후에 next State을 return 한다.
+ 3) 클라이언트 디렉토리에서 다운로드
+  - $ npm install redux react-redux redux-promise redux-thunk --save
+  - redux-thunk : action에서 function 형태로 사용하기 위한 라이브러리
+  - redux-promise : action에서 promise 형태로 사용하기 위한 라이브러리
+ 4) Redux DevTools 다운로드
